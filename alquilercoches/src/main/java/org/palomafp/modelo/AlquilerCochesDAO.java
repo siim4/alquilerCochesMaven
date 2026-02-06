@@ -14,4 +14,9 @@ public class AlquilerCochesDAO {
         System.out.println("Reserva: " + reserva1.getCodigoReserva());
         System.out.println("Garaje: " + garaje1.getDireccion());
     }
+public static Cliente crearCliente() {
+    return new Cliente("C002", "48056723X", "Edu Vargas", "Calle del Peru", "667027925");
+}
+
+
 }
