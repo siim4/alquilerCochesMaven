@@ -1,20 +1,13 @@
 package org.palomafp;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+class AppTest {
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void mainShouldRunWithoutThrowing() {
+        assertDoesNotThrow(() -> App.main(new String[]{}));
     }
 }
