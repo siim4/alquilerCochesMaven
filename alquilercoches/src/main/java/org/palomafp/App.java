@@ -3,12 +3,12 @@ package org.palomafp;
 import java.util.Scanner;
 
 import org.palomafp.modelo.AlquilerCochesDAO;
+import org.palomafp.modelo.Reserva;
 
 public class App {
 
     public static void main(String[] args) {
 
-        //AlquilerCochesDAO.mostrarDatos();
         AlquilerCochesDAO dao = new AlquilerCochesDAO();
         Scanner sc = new Scanner(System.in);
         int opcion;
@@ -26,6 +26,7 @@ public class App {
             switch (opcion) {
                 case 0:
                     System.out.println("Saliendooo");
+                    break;
                 case 1:
 
                     System.out.println(dao.getReservaRandom());
@@ -43,7 +44,11 @@ public class App {
 
 
             case 3: 
-            System.out.println(dao.getAllReserva());
+        
+            for( Reserva r: dao.getAllReserva()){
+                System.out.println(r);
+                System.out.println();
+            }
              break;
 
                 default:

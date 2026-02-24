@@ -39,6 +39,7 @@ public class AlquilerCochesDAOTest {
 
         assertEquals("G001", garaje1.getCodigoGaraje());
         assertEquals("Avenida Francos Rodriguez 106", garaje1.getDireccion());
+        assertDoesNotThrow(() -> AlquilerCochesDAO.mostrarDatos(cliente1, coche1, reserva1, garaje1));
     }
 
 }
