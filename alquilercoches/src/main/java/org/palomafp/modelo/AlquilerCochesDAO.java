@@ -59,21 +59,5 @@ public class AlquilerCochesDAO {
 
     public ArrayList<Reserva> getAllReserva() {
         return this.reservas;
-    }
-
-   public static void mostrarDatos(Cliente cliente1, Coche coche1, Reserva reserva1, Garaje garaje1) {
-        
-        System.out.println("Cliente: " + cliente1.getNombre());
-        System.out.println("Coche: " + coche1.getModelo());
-        System.out.println("Reserva: " + reserva1.getCodigoReserva());
-        System.out.println("Garaje: " + garaje1.getDireccion());
-    }
-        
-
-
-    public static Cliente crearCliente() {
-        return new Cliente("C002", "48056723X", "Edu Vargas", "Calle del Peru", "667027925");
-    }
-
-   
+    } 
 }
