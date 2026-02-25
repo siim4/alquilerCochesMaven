@@ -10,8 +10,7 @@ public class Reserva {
     private Cliente cliente;
     private Coche coche;
 
-    public Reserva() {
-    }
+   
 
     public Reserva(String codigoReserva, Date fechaInicio, Date fechaFin, double precio, Cliente cliente, Coche coche) {
         this.codigoReserva = codigoReserva;
@@ -22,9 +21,17 @@ public class Reserva {
         this.coche = coche;
     }
 
+    public Reserva() {
+
+    }
+
     public String getCodigoReserva() {
         return codigoReserva;
     }
+
+    
+
+
 
     public void setCodigoReserva(String codigoReserva) {
         this.codigoReserva = codigoReserva;
