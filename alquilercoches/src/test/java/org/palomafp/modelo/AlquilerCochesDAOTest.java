@@ -19,6 +19,7 @@ public class AlquilerCochesDAOTest {
 
         assertNotNull(reservaRandom, "La reserva aleatoria no puede ser nula");
         assertTrue(reservaRandom instanceof Reserva, "El objeto devuelto debe ser una instancia de Reserva");
+       assertTrue(reservaRandom.getCodigoReserva().length() ==4 ,"Comprobamos que el codigo de reserva que nos devuelve tiene un parametro esperado, una longitud de 4 caracteres");
     }
 
     @Test
@@ -28,6 +29,7 @@ public class AlquilerCochesDAOTest {
 
         assertNotNull(reserva, "La reserva con ID R002 no debe ser nula");
         assertEquals("R002", reserva.getCodigoReserva(), "El código de la reserva debe ser R002");
+        assertEquals("Marca K", reserva.getCoche().getMarca(),"Comprobamos que nos devuelve bien la matricula del coche en la reserva");
         
     }
 
@@ -36,6 +38,8 @@ public class AlquilerCochesDAOTest {
         AlquilerCochesDAO dao = new AlquilerCochesDAO();
         assertNotNull(dao.getAllReserva(), "La lista de reservas no puede ser nula");
         assertTrue(dao.getAllReserva().size() > 0 || !dao.getAllReserva().isEmpty(), "La lista de reservas debe contener al menos una reserva");
+        assertTrue(dao.getAllReserva().size() ==4 ,  "La lista de reservas tiene que tener exactamente 4 reservas ");
+
     }
 
 }
