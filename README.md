@@ -23,59 +23,120 @@ src/
 ├── main/
 │   └── java/
 │       └── org/palomafp/
-│           ├── App.java              # Punto de entrada + menú de consola
+│           ├── App.java                   # Punto de entrada + menú de consola
 │           └── modelo/
 │               ├── AlquilerCochesDAO.java  # Capa de acceso a datos (DAO)
-│               ├─│               ├─│               ├─│               ├─│               ├─ #│            │     │               ├─│               ├─│               ├─│               ├─│               ├─ #│          ─ test│               �a/
-│               ├─│               ├─│               ├─│               ├─│               ├─ #│            │     │               └── AlquilerCochesDAOTest.java # Tests unitarios del DAO
-```
+│               ├── Cliente.java            # Entidad Cliente
+│               ├── Coche.java              # Entidad Coche
+│               ├── Garaje.java             # Entidad Garaje
+│               └── Reserva.java            # Entidad Reserva
+└── test/
+    └── java/
+        └── org/palomafp/
+            ├── AppTest.java               # Test básico de la aplicación
+            └── modelo/
+                └── AlquilerCochesDAOTest.java # Tests unitarios del DAO
 
----
+``` 
 
-## 📐 Diagrama de## 📐 Diagrama de## 📐 Diagrama de##ente "1" o-- "*" Reserva : "tiene"
-    Coche "1" o--     Coche "1" o--     Coche "1" o--     C"1" o-- "*" Coche : "contiene"
-    Reserva --> Cl   te : cliente
+## Diagrama de Clases 
+
+```mermaid
+classDiagram
+    Cliente "1" o-- "*" Reserva : tiene
+    Coche "1" o-- "*" Reserva : es reservable
+    Garaje "1" o-- "*" Coche : contiene
+    Reserva --> Cliente : cliente
     Reserva --> Coche : coche
 
     class Cliente {
-        -         -         -         -         -         -         -         -         -  g direccion
-        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo      - Date fechaInicio
+        - String codigoCliente
+        - String DNI
+        - String nombre
+        - String direccion
+        - String telefono
+        - List~Reserva~ reservas
+    }
+
+    class Coche {
+        - String matricula
+        - String modelo
+        - String color
+        - String marca
+        - Garaje garaje
+        - List~Reserva~ reservas
+    }
+
+    class Garaje {
+        - String codigoGaraje
+        - String direccion
+        - List~Coche~ coches
+    }
+
+    class Reserva {
+        - String codigoReserva
+        - Date fechaInicio
         - Date fechaFin
         - double precio
         - Cliente cliente
         - Coche coche
     }
+
 ```
-
----
-
+--- 
 ## 🧩 Descripción de las clases
 
 ### `Cliente`
-Guarda el código de cliente, DNI, nombre, dirección, teléfono y lista de reservas.
+ Guarda el código de cliente, DNI, nombre, dirección, teléfono y lista de reservas.
 
-### `Coche`
-Guarda matrícula, modelo, color, marca, garaje y lista de reservas.
+### `Coche`
+ Guarda matrícula, modelo, color, marca, garaje y lista de reservas.
 
 ### `Garaje`
-Guarda código de garaje, dirección y lista de coches.
+ Guarda código de garaje, dirección y lista de coches.
+
+### `Reserva`
+ Guarda código de reserva, fecha de inicio, fecha fin, precio, cliente y coche.
+
+### `AlquilerCochesDao``
+Inicializa los datos en memoria e implementa las operaciones de consulta:
 
 
-uarda código de garaje, do de reserva, fecha de inicio, fecha fin, precio, cliente y coche.
+| Método | Descripción |
+|---|---|
+| `getAllReserva()` | Devuelve la lista completa de reservas |
+| `getGrupoByCodigo(int)` | Busca una reserva por su código |
+| `getReservaRandom()` | Devuelve una reserva aleatoria |
 
-### `AlquilerCochesDAO`
-Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a da JCapa de acceso or
-- Mave- Mave- Mave- Mave- Maejecutar
+### `App`
+Clase principal con el método `main`. Gestiona el menú interactivo por consola mediante un bucle `do-while` y un `switch`.
+--- 
+
+## ▶️ Cómo ejecutar
+
+### Requisitos
+
+- Java 11 o superior
+- Maven 3.x
+
+### Compilar y ejecutar
 
 ```bash
-mvn clean compile
-mvn exec:java -Dexec.mainmvassmvn exec:java -Dexec.mainmva Ejecutar los tests
+mvn compile
+mvn exec:java -Dexec.mainClass="org.palomafp.App"
+```
 
-````````````````````````````````````````````````````````````````````````````````Alquiler``````````es````````````````````````````````````````````````````````````````llRese```````````fica que se devuelven todas (4) reservas |
-| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `tomprueba que la reserva aleatoria no es nula |
+## 🧪 Tests incluidos
+
+Los tests se encuentran en `AlquilerCochesDaoTest.java` y prueban los siguientes casos:
+
+| Test | Descripción |
+|---|---|
+| `testGetAllReserva` | Verifica que se devuelven exactamente 4 reservas |
+| `testGetReservaRandom` | Comprueba que el reserva aleatorio no es nula  |
+| `testGetReservabyId` | Verifica busqueda por codigo valido e invalido |
 
 ---
-
 ## 📦 Tecnologías utilizadas
 
 | Tecnología | Uso |
@@ -83,11 +144,4 @@ mvn exec:java -Dexec.mainmvassmvn exec:java -Dexec.mainmva Ejecutar los tests
 | Java | Lenguaje principal |
 | Maven | Gestión de dependencias y build |
 | JUnit 5 | Framework de testing |
-
----
-
-## 👤 Autor
-
-Eduardo y Sima.
-
-Proyecto desarrollado para la asignatura de Entornos de Desarrollo.
+--- 
