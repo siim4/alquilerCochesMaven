@@ -7,11 +7,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Clase de pruebas para AlquilerCochesDAO
+ * comprueba el funcionamiento de los métodos de acceso a datos de reservas
+ *
+ * @author Eduardo Vargas y Sima
+ */
 public class AlquilerCochesDAOTest {
  
 
-   
-
+    /**
+     * Prueba el método getReservaRandom
+     * Verifica que devuelve una reserva no nula y con código de 4 caracteres
+     */
     @Test
     void testGetReservaRandom() {
         AlquilerCochesDAO dao = new AlquilerCochesDAO();
@@ -22,6 +30,10 @@ public class AlquilerCochesDAOTest {
        assertTrue(reservaRandom.getCodigoReserva().length() ==4 ,"Comprobamos que el codigo de reserva que nos devuelve tiene un parametro esperado, una longitud de 4 caracteres");
     }
 
+    /**
+     * Prueba el método getReservabyId con id R002
+     * Verifica que devuelve la reserva correcta con sus datos
+     */
     @Test
     void testGetReservabyId() {
         AlquilerCochesDAO dao = new AlquilerCochesDAO();
@@ -33,6 +45,10 @@ public class AlquilerCochesDAOTest {
         
     }
 
+    /**
+     * Prueba el método getAllReserva
+     * Verifica que devuelve una lista no nula con exactamente 4 reservas
+     */
     @Test
     void testGetAllReserva() {
         AlquilerCochesDAO dao = new AlquilerCochesDAO();

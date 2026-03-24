@@ -3,13 +3,24 @@ package org.palomafp.modelo;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Clase que simula todos los datos de las reservas de coches, clientes, garajes y coches.
+* @@author Eduardo Vargas y Sima
+*/
 public class AlquilerCochesDAO {
 
+    /**
+     * Lista de reservas de coches
+     */
     private ArrayList<Reserva> reservas = null;
 
+    /**
+     * Constructor de AlquilerCochesDAO que inicializa datos para las reservas, cliente, garaje y coches
+     */
     public AlquilerCochesDAO() {
-        this.reservas = new ArrayList<>();
 
+        this.reservas = new ArrayList<>();
+         // se crea una instancia de cliente, garaje, coche y reserva 
         Cliente cliente1 = new Cliente("C001", "12345678A", "Juan Pérez", "Calle Falsa 123", "600123456");
         Garaje garaje1 = new Garaje("G001", "Avenida Principal 456");
         Coche coche1 = new Coche("1234ABC", "Modelo X", "Rojo", "Marca Y", garaje1);
@@ -33,6 +44,7 @@ public class AlquilerCochesDAO {
     Coche coche4 = new Coche("1213JKL", "Modelo B", "Blanco", "Marca H", garaje4);
     Reserva reserva4 = new Reserva("R004", new Date(), new Date(), 180.0, cliente4, coche4);
 
+    // se añaden las reservas a la lista de reservas
     this.reservas.add(reserva1);
     this.reservas.add(reserva2);
     this.reservas.add(reserva3);
@@ -41,11 +53,20 @@ public class AlquilerCochesDAO {
 
     }
 
+    /**
+     * Metodo que devuelve una reserva aleatoria de la lista de reservas
+     * @return una posicion aleatoria de la lista de reservas
+     */
     public Reserva getReservaRandom() {
         int posicion = (int) (Math.random() * reservas.size());
         return reservas.get(posicion);
     }
 
+    /**
+     * Metodo que devuelve una reserva en funcion del codigo de reserva
+     * @param id codigo de reserva que se va a buscar en la lista de reservas
+     * @return la reserva que coincide la devuelve, sino devuelve null
+     */
     public Reserva getReservabyId(String id) {
 
         for (Reserva r : reservas) {
@@ -56,6 +77,11 @@ public class AlquilerCochesDAO {
         }
         return null;
     }
+
+    /**
+     * Metodo que devuelve la lista de reservas
+     * @return todas las reservas 
+     */
 
     public ArrayList<Reserva> getAllReserva() {
         return this.reservas;

@@ -89,7 +89,7 @@ classDiagram
 ### `Cliente`
  Guarda el código de cliente, DNI, nombre, dirección, teléfono y lista de reservas.
 
-### `Coche`
+###  `Coche`
  Guarda matrícula, modelo, color, marca, garaje y lista de reservas.
 
 ### `Garaje`
@@ -98,7 +98,7 @@ classDiagram
 ### `Reserva`
  Guarda código de reserva, fecha de inicio, fecha fin, precio, cliente y coche.
 
-### `AlquilerCochesDao``
+### `AlquilerCochesDao`
 Inicializa los datos en memoria e implementa las operaciones de consulta:
 
 
