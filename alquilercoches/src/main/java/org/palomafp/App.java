@@ -61,7 +61,14 @@ public class App {
                     break;
                 case 1:
 
-                    System.out.println(dao.getReservaRandom());
+                    Reserva reservaRandom = dao.getReservaRandom();
+                    System.out.println(" RESERVA ALEATORIA ");
+                    System.out.println(reservaRandom);
+                    System.out.println("--- Cliente ---");
+                    System.out.println(reservaRandom.getCliente());
+                    System.out.println("--- Coche ---");
+                    System.out.println(reservaRandom.getCoche());
+                    System.out.println("------------------");
 
                     break;
 
@@ -69,16 +76,33 @@ public class App {
                     System.out.println("Introduce tu codigo de reserva");
                     codigo = sc.next();
 
-                    System.out.println(dao.getReservabyId(codigo));
+                    Reserva reservaBuscada = dao.getReservabyId(codigo);
+                    if (reservaBuscada != null) {
+                        System.out.println("Reserva encontrada tt ");
+                        System.out.println(reservaBuscada);
+                        System.out.println("--- Cliente ---");
+                        System.out.println(reservaBuscada.getCliente());
+                        System.out.println("--- Coche ---");
+                        System.out.println(reservaBuscada.getCoche());
+                        System.out.println("------------------");
+                    } else {
+                        System.out.println("No se encontró la reserva con código: " + codigo);
+                    }
                     break;
 
                 case 3:
 
+                    System.out.println("Todas las reservas tt ");
                     for (Reserva r : dao.getAllReserva()) {
-                        System.out.println("-------------");
+                        System.out.println("------- Reserva -------");
                         System.out.println(r);
-                        System.out.println("-------------");
+                        System.out.println("--- Cliente ---");
+                        System.out.println(r.getCliente());
+                        System.out.println("--- Coche ---");
+                        System.out.println(r.getCoche());
+                        System.out.println();
                     }
+                    System.out.println("------------------");
                     break;
 
                 case 4:
