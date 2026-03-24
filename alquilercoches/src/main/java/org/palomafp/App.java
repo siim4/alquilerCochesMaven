@@ -45,6 +45,7 @@ public class App {
             System.out.println("3.Mostrar todas las reservas");
             System.out.println("4.Crear una nueva reserva");
             System.out.println("5.Borrar una reserva");
+            System.out.println();
 
             try {
                 opcion = sc.nextInt();
@@ -63,30 +64,41 @@ public class App {
 
                     Reserva reservaRandom = dao.getReservaRandom();
                     System.out.println(" RESERVA ALEATORIA ");
+                    System.out.println();
                     System.out.println(reservaRandom);
+                    System.out.println();
                     System.out.println("--- Cliente ---");
                     System.out.println(reservaRandom.getCliente());
+                    System.out.println();
                     System.out.println("--- Coche ---");
                     System.out.println(reservaRandom.getCoche());
+                    System.out.println();
                     System.out.println("------------------");
+                    System.out.println();
 
                     break;
 
                 case 2:
                     System.out.println("Introduce tu codigo de reserva");
                     codigo = sc.next();
+                    System.out.println();
 
                     Reserva reservaBuscada = dao.getReservabyId(codigo);
                     if (reservaBuscada != null) {
                         System.out.println("Reserva encontrada tt ");
                         System.out.println(reservaBuscada);
+                        System.out.println();
                         System.out.println("--- Cliente ---");
                         System.out.println(reservaBuscada.getCliente());
+                        System.out.println();
                         System.out.println("--- Coche ---");
                         System.out.println(reservaBuscada.getCoche());
+                        System.out.println();
                         System.out.println("------------------");
+                        System.out.println();
                     } else {
                         System.out.println("No se encontró la reserva con código: " + codigo);
+                        System.out.println();
                     }
                     break;
 
@@ -95,14 +107,20 @@ public class App {
                     System.out.println("Todas las reservas tt ");
                     for (Reserva r : dao.getAllReserva()) {
                         System.out.println("------- Reserva -------");
+                        System.out.println();
                         System.out.println(r);
+                        System.out.println();
                         System.out.println("--- Cliente ---");
                         System.out.println(r.getCliente());
+                        System.out.println();
                         System.out.println("--- Coche ---");
                         System.out.println(r.getCoche());
                         System.out.println();
+                        System.out.println("-----------------------");
+                        System.out.println();
                     }
                     System.out.println("------------------");
+                    System.out.println();
                     break;
 
                 case 4:
@@ -112,6 +130,7 @@ public class App {
                     String codCliente = sc.next();
                     System.out.println("Introduce el precio de la reserva");
                     double precioReserva = sc.nextDouble();
+                    System.out.println();
                     
                     // Buscar el cliente en todas las reservas existentes
                     Cliente clienteEncontrado = null;
@@ -137,6 +156,7 @@ public class App {
                         } else {
                             System.out.println("error tt  ese código de reserva ya existe");
                         }
+                        System.out.println();
                     } else {
                         System.out.println("error no se ha encontrado el cliente o coche");
                     }
@@ -145,6 +165,7 @@ public class App {
                 case 5:
                     System.out.println("Introduce el código de la reserva a borrar");
                     String codReservaBorrar = sc.next();
+                    System.out.println();
                     boolean borrada = dao.borrarReserva(codReservaBorrar);
                     if (borrada) {
                         System.out.println("Reserva borrada exitosamente");
