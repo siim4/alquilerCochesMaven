@@ -85,5 +85,47 @@ public class AlquilerCochesDAO {
 
     public ArrayList<Reserva> getAllReserva() {
         return this.reservas;
-    } 
+    }
+
+    /**
+     * Metodo que crea una nueva reserva y la agrega a la lista
+     * @param codigoReserva codigo de la reserva
+     * @param fechaInicio fecha de inicio
+     * @param fechaFin fecha de fin
+     * @param precio precio de la reserva
+     * @param cliente cliente de la reserva
+     * @param coche coche de la reserva
+     * @return true si se creo bien tt, false si el codigo ya existe
+     */
+    public boolean crearReserva(String codigoReserva, Date fechaInicio, Date fechaFin, double precio, Cliente cliente, Coche coche) {
+        for (Reserva r : reservas) {
+            if (r.getCodigoReserva().equals(codigoReserva)) {
+                return false;
+            }
+        }
+        Reserva nuevaReserva = new Reserva(codigoReserva, fechaInicio, fechaFin, precio, cliente, coche);
+        cliente.addReserva(nuevaReserva);
+        this.reservas.add(nuevaReserva);
+        return true;
+    }
+
+    /**
+     * Metodo que borra una reserva de la lista por su codigo
+     * @param codigoReserva codigo de la reserva a borrar
+     * @return true si se borro, false si no existe
+     */
+    public boolean borrarReserva(String codigoReserva) {
+        for (int i = 0; i < reservas.size(); i++) {
+            if (reservas.get(i).getCodigoReserva().equals(codigoReserva)) {
+                Reserva reserva = reservas.get(i);
+                // Eliminar la reserva del cliente
+                if (reserva.getCliente() != null) {
+                    reserva.getCliente().removeReserva(reserva);
+                }
+                reservas.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

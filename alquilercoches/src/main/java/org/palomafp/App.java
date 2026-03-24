@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import org.palomafp.modelo.AlquilerCochesDAO;
 import org.palomafp.modelo.Reserva;
+import org.palomafp.modelo.Cliente;
+import org.palomafp.modelo.Coche;
 
 /**
  * Clase principal que ejecuta el simulamiento de alquiler de coches.
@@ -41,6 +43,8 @@ public class App {
             System.out.println("1.Mostrar una reserva aleatoria");
             System.out.println("2.Mostrar reserva según el código");
             System.out.println("3.Mostrar todas las reservas");
+            System.out.println("4.Crear una nueva reserva");
+            System.out.println("5.Borrar una reserva");
 
             try {
                 opcion = sc.nextInt();
@@ -74,6 +78,54 @@ public class App {
                         System.out.println("-------------");
                         System.out.println(r);
                         System.out.println("-------------");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Introduce el código de la nueva reserva");
+                    String codReserva = sc.next();
+                    System.out.println("Introduce el código del cliente");
+                    String codCliente = sc.next();
+                    System.out.println("Introduce el precio de la reserva");
+                    double precioReserva = sc.nextDouble();
+                    
+                    // Buscar el cliente en todas las reservas existentes
+                    Cliente clienteEncontrado = null;
+                    for (Reserva r : dao.getAllReserva()) {
+                        if (r.getCliente() != null && r.getCliente().getCodigoCliente().equals(codCliente)) {
+                            clienteEncontrado = r.getCliente();
+                            break;
+                        }
+                    }
+                    
+                    Coche cocheEncontrado = null;
+                    for (Reserva r : dao.getAllReserva()) {
+                        if (r.getCoche() != null) {
+                            cocheEncontrado = r.getCoche();
+                            break;
+                        }
+                    }
+                    
+                    if (clienteEncontrado != null && cocheEncontrado != null) {
+                        boolean creada = dao.crearReserva(codReserva, new java.util.Date(), new java.util.Date(), precioReserva, clienteEncontrado, cocheEncontrado);
+                        if (creada) {
+                            System.out.println("Reserva creada exitosamente");
+                        } else {
+                            System.out.println("error tt  ese código de reserva ya existe");
+                        }
+                    } else {
+                        System.out.println("error no se ha encontrado el cliente o coche");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Introduce el código de la reserva a borrar");
+                    String codReservaBorrar = sc.next();
+                    boolean borrada = dao.borrarReserva(codReservaBorrar);
+                    if (borrada) {
+                        System.out.println("Reserva borrada exitosamente");
+                    } else {
+                        System.out.println(" No se ha encontrado  la reserva con código " + codReservaBorrar);
                     }
                     break;
 
