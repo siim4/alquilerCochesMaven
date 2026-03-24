@@ -1,39 +1,36 @@
-# Alquiler de Coches Maven
+# AlquilerCoches - Gestión de reservas de coches (Java + Maven)
 
-Proyecto Java de consola que gestiona el alquiler de coches. Construido con Maven y organizado en el paquete `org.palomafp`.
+Aplicación de consola para gestionar reservas de coches con arquitectura en capas y patrón DAO (Data Access Object).
 
-## 🚀 Visión general
+## 📋 Descripción
 
-- Gestión de clientes, coches, garajes y reservas
-- Capa de modelo en `org.palomafp.modelo`
-- Persistencia en memoria con `AlquilerCochesDAO`
-- Pruebas unitarias con JUnit
+AlquilerCoches permite administrar clientes, coches, garajes y reservas en memoria. El usuario interactúa mediante un menú en la consola para:
 
-## 📁 Estructura del proyecto
+- Obtener una reserva de forma aleatoria
+- Buscar una reserva por su código
+- Consultar todas las reservas registradas
 
-- `pom.xml`: configuración de Maven
-- `src/main/java`: código fuente principal
-  - `org.palomafp.App.java`: clase principal
-  - `org.palomafp.modelo`: clases del dominio
-    - `AlquilerCochesDAO.java`
-    - `Cliente.java`
-    - `Coche.java`
-    - `Garaje.java`
-    - `Reserva.java`
-- `src/test/java`: pruebas unitarias
-  - `org.palomafp.AppTest.java`
-  - `org.palomafp.modelo.AlquilerCochesDAOTest.java`
+## 🏗️ Estructura del proyecto
 
-## 🧩 Diagrama de clases (Mermaid)
+- `pom.xml`: configuración Maven
+- `src/main/java/org/palomafp/App.java`: punto de entrada, bucle do-while + switch para menú interactivo
+- `src/main/java/org/palomafp/modelo/AlquilerCochesDAO.java`: DAO con datos iniciales en memoria y métodos de consulta
+- `src/main/java/org/palomafp/modelo/Cliente.java`: entidad cliente
+- `src/main/java/org/palomafp/modelo/Coche.java`: entidad coche
+- `src/main/java/org/palomafp/modelo/Garaje.java`: entidad garaje
+- `src/main/java/org/palomafp/modelo/Reserva.java`: entidad reserva con relación a cliente y coche
+- `src/test/java/org/palomafp/AppTest.java`: tests unitarios básicos de aplicación
+- `src/test/java/org/palomafp/modelo/AlquilerCochesDAOTest.java`: tests unitarios del DAO
 
-```mermaid
-classDiagram
-    class Cliente {
+## 📐 Diagrama de clases
+
+Consulta el diagrama de clases en `doc/diagrama_clases.md` y el bloque Mermaid incluido en este README.
+
+
+onsulta el diagrama de clases en Cliente {
         - String codigoCliente
-        - String DNI
-        - String nombre
-        - String direccion
-        - String telefono
+                                       ombre
+                                   - String telefono
         - List<Reserva> reservas
         + addReserva(Reserva)
         + removeReserva(Reserva)
@@ -74,30 +71,37 @@ classDiagram
     Reserva --> Coche : coche
 ```
 
+## 🧩 Detalle de clases
+
+- `Cliente`: guarda el código, DNI, nombre, dirección, teléfono y mantiene sus reservas.
+- `Coche`: guarda matrícula, modelo, color, marca, relación a garaje y reservas.
+- `Garaje`: guarda código de garaje, dirección y lista de coches.
+- `Reserva`: guarda código de reserva, fechas, precio, cliente y coche.
+- `AlquilerCochesDAO`: crea datos de ejemplo (4 reservas con cliente/coche/garaje), devuelve todos los registros, busca por c- `Ago - `AlquilerCochesia.
+
+## 🎯 Flujo de la aplicac## 🎯 Flujo de la aplicMo## 🎯 Flujo de la aptoria (`getReservaRandom`)
+2. Bus2. Bus2. Bus2. Bus2. go (`getReservabyId`)
+3. Mostrar todas las reservas (`getAllReserva`)
+0. Salir
+
 ## 🛠️ Requisitos
 
 - Java 11 o superior
-- Maven 3.6+
+- Maven 3.x
 
-## ▶️ Uso
+## ▶️ Compilar y ejecutar
+## ▶️ Compiean com## 
+�mvn exec:java -Dexec.mainClass="org.palomafp.App"
+```
 
-1. Compilar:
-   ```bash
-   mvn clean compile
-   ```
-2. Ejecutar:
-   ```bash
-   mvn exec:java -Dexec.mainClass="org.palomafp.App"
-   ```
-3. Ejecutar pruebas:
-   ```bash
-   mvn test
-   ```
+## 🧪 Tests
 
-## 🤝 Contribuir
+```bash
+mvn test
+```
 
-Forkear el repositorio, crear una rama y enviar un pull request.
+Test principales:
 
-## 📄 Licencia
-
-MIT License (ajustar según proyecto).
+- `testGetAllReserva` (confirma la cantidad de reservas)
+- `testGetReservabyId` (para código válido e inválido)
+- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `t- `T (ajustar según sea necesario)
