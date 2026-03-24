@@ -32,9 +32,11 @@ public class App {
          * Se muestra un menu interactivo con varias opciones
          */
 
+            System.out.println("Menu de alquiler de coches");
+
         do {
 
-            System.out.println("MENUUU");
+           System.out.println();
             System.out.println("0.Salir");
             System.out.println("1.Mostrar una reserva aleatoria");
             System.out.println("2.Mostrar reserva según el código");
@@ -69,8 +71,9 @@ public class App {
                 case 3:
 
                     for (Reserva r : dao.getAllReserva()) {
+                        System.out.println("-------------");
                         System.out.println(r);
-                        System.out.println();
+                        System.out.println("-------------");
                     }
                     break;
 
