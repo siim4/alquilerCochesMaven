@@ -1,54 +1,93 @@
-# AlquilerCoches - Gestión de reservas de coches (Java + Maven)
+# 🛻 AlquilerCoches
 
-Aplicación de consola para gestionar reservas de coches con arquitectura en capas y patrón DAO (Data Access Object).
+Aplicación de gestión de reservas de coches desarrollada en **Java** con arquitectura en capas y patrón **DAO** (Data Access Object).
+
+---
 
 ## 📋 Descripción
 
-AlquilerCoches permite administrar clientes, coches, garajes y reservas en memoria. El usuario interactúa mediante un menú en la consola para:
+**AlquilerCoches** permite gestionar clientes, coches, garajes y reservas. La aplicación organiza clientes y coches en un sistema con reservas con fechas y precio.
+
+El usuario interactúa con el sistema a través de un **menú de consola** que permite:
 
 - Obtener una reserva de forma aleatoria.
-- Buscar una reserva por su código.
+- Buscar una reserva por su código identificador.
 - Consultar todas las reservas registradas.
+
+---
 
 ## 🏗️ Estructura del proyecto
 
-- `pom.xml`: configuración Maven
-- `src/main/java/org/palomafp/App.java`: punto de entrada, bucle do-while + switch para menú interactivo
-- `src/main/java/org/palomafp/modelo/AlquilerCochesDAO.java`: DAO con datos iniciales en memoria y métodos de consulta
-- `src/main/java/org/palomafp/modelo/Cliente.java`: entidad cliente
-- `src/main/java/org/palomafp/modelo/Coche.java`: entidad coche
-- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java: - `src/main/java/org- `src/main/java/org- `src/main/java/org- `a/o- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java:sDAOTest.java`: tests uni- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java/org- `src/main/java: - `src/main/java/org- `srión.
+```
+src/
+├── main/
+│   └── java/
+│       └── org/palomafp/
+│           ├── App.java              # Punto de entrada + menú de consola
+│           └── modelo/
+│               ├── AlquilerCochesDAO.java  # Capa de acceso a datos (DAO)
+│               ├─│               ├─│               ├─│               ├─│               ├─ #│            │     │               ├─│               ├─│               ├─│               ├─│               ├─ #│          ─ test│               �a/
+│               ├─│               ├─│               ├─│               ├─│               ├─ #│            │     │               └── AlquilerCochesDAOTest.java # Tests unitarios del DAO
+```
 
-```mermaid
-classDiagram
-    class Clie    class Clie    class Clie    clae
-        - String DNI
-        - String nombre
-        - String direccion
-        - String telefono
-        - List<Reserva> reservas
-        + addReserva(Reserva)
-        + removeReserva(Reserva)
+---
+
+## 📐 Diagrama de## 📐 Diagrama de## 📐 Diagrama de##ente "1" o-- "*" Reserva : "tiene"
+    Coche "1" o--     Coche "1" o--     Coche "1" o--     C"1" o-- "*" Coche : "contiene"
+    Reserva --> Cl   te : cliente
+    Reserva --> Coche : coche
+
+    class Cliente {
+        -         -         -         -         -         -         -         -         -  g direccion
+        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo        - Stri        - String telefo        - String telefo        - String telefo        - String telefo      - Date fechaInicio
+        - Date fechaFin
+        - double precio
+        - Cliente cliente
+        - Coche coche
     }
+```
 
-    class Coche {
-        - String matricula
-        - String modelo
-        - String color
-        - String marca
-        - Garaje garaje
-        - List<Reserva> reservas
-        + addReserva(Reserva)
-        + removeReserva(Reserva)
-    }
+---
 
-    class Garaje {
-        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        - S        nte : cliente
-    Reserva -->     Reserva -->     Reserva -->     Reserva --- `Cl    Reserva --> clien    Reserva -->  direcci    Reserva -->     Ra de reservas.
-- `Coche`: matrícula, modelo, color, marca, garaj- `Coche`: matrícuas.
-- `Garaje`: código de garaje, dirección y lista de coches.
-- `R- `R- `R- `R- `R- `R- `aci�- `R- `R- `R- io, fecha - `R- `R- `R- `R- `R-y coche.
-- `AlquilerCochesDAO`: inicializa datos de ejemplo y ofrece métodos:
-  -  -  -  -  -  -  -  -  `getRes  -  -  -  -  -  -  -  - servaRandom()`
+## 🧩 Descripción de las clases
 
-## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯d`## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l## 🎯 Flujo de l##nse (ajustar según proyecto).
+### `Cliente`
+Guarda el código de cliente, DNI, nombre, dirección, teléfono y lista de reservas.
+
+### `Coche`
+Guarda matrícula, modelo, color, marca, garaje y lista de reservas.
+
+### `Garaje`
+Guarda código de garaje, dirección y lista de coches.
+
+
+uarda código de garaje, do de reserva, fecha de inicio, fecha fin, precio, cliente y coche.
+
+### `AlquilerCochesDAO`
+Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a datos. Inicializa datos en memoria e implementa las Capa de acceso a da JCapa de acceso or
+- Mave- Mave- Mave- Mave- Maejecutar
+
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainmvassmvn exec:java -Dexec.mainmva Ejecutar los tests
+
+````````````````````````````````````````````````````````````````````````````````Alquiler``````````es````````````````````````````````````````````````````````````````llRese```````````fica que se devuelven todas (4) reservas |
+| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `testGetReserva| `tomprueba que la reserva aleatoria no es nula |
+
+---
+
+## 📦 Tecnologías utilizadas
+
+| Tecnología | Uso |
+|---|---|
+| Java | Lenguaje principal |
+| Maven | Gestión de dependencias y build |
+| JUnit 5 | Framework de testing |
+
+---
+
+## 👤 Autor
+
+Eduardo y Sima.
+
+Proyecto desarrollado para la asignatura de Entornos de Desarrollo.
